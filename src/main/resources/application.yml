@@ -1,0 +1,25 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  thymeleaf:
+    check-template-location: 'false'
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: 'true'
+        ddl-auto: update
+    show-sql: 'true'
+    generate-ddl: true
+  datasource:
+    username: logger
+    url: jdbc:postgresql://localhost:5432/log
+    password: 1111
+    driver-class-name: org.postgresql.Driver
+server:
+  port: 8080
+
+
+
