@@ -16,7 +16,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "source1")
+@Table(name = "source")
 @Data
 @ToString
 public class Source {
@@ -24,8 +24,11 @@ public class Source {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "number_of_magnetron")
-    private Long numberOfMagnetron;
+    @Column(name = "source_id")
+    private Long sourceId;
+
+    @Column(name = "magnetron_id")
+    private Long magnetronId;
 
     @Column(name = "time")
     private double time;
