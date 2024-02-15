@@ -1,16 +1,24 @@
 package com.work.proj.repos;
 
-import com.work.proj.model.Source;
+import com.work.proj.model.SourceInfo;
+import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface SourceRepository extends JpaRepository<Source, Long> {
+public interface SourceRepository extends JpaRepository<SourceInfo, Long> {
 
-    @Query("SELECT (id) FROM Source WHERE time=(SELECT MAX(time) from Source)")
-    Source findSource();
-
-    List<Source> findAll();
+//    List<SourceInfo> findSourceInfoBySourceId(Long sourceId);
+    List<SourceInfo> findSourceInfoByMagnetronId(Long magnetronId);
+    @Modifying
+    @Query(value = "SELECT s FROM SourceInfo s " +
+        "WHERE sourceId = :id " +
+        "AND time = (" +
+        "SELECT MAX(time) " +
+        "FROM SourceInfo " +
+        "WHERE sourceId = :id)")
+    SourceInfo findSourceInfoBySourceId(@Param("id") Long id);
+    List<SourceInfo> findAll();
 }

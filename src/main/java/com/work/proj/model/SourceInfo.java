@@ -19,7 +19,7 @@ import java.util.List;
 @Table(name = "source")
 @Data
 @ToString
-public class Source {
+public class SourceInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -1,7 +1,12 @@
 package com.work.proj.service;
 
-import com.work.proj.model.Source;
+import com.work.proj.model.SourceInfo;
+
+import java.util.List;
 
 public interface SourceService {
-    Source getSourceInfo(Long id);
+    SourceInfo getSourceInfo(Long id);
+    List<SourceInfo> getAll();
+
+    List<SourceInfo> getAllInfo();
 }
