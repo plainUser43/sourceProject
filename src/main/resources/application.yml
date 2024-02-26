@@ -14,9 +14,9 @@ spring:
     show-sql: 'true'
     generate-ddl: true
   datasource:
-    username: logger
-    url: jdbc:postgresql://localhost:5432/log
-    password: 1111
+    username: wsluser
+    url: jdbc:postgresql://localhost:5433/wslLogger
+    password: 1234
     driver-class-name: org.postgresql.Driver
 
 
