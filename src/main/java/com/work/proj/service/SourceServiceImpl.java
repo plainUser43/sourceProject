@@ -26,7 +26,6 @@ public class SourceServiceImpl implements SourceService{
     public List<SourceInfo> getAll() {
         return sourceRepository.findAll();
     }
-
     @Override
     public List<SourceInfo> getAllInfo() {
         List<SourceInfo> result = new ArrayList<>();

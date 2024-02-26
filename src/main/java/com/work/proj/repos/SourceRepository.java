@@ -10,7 +10,6 @@ import java.util.List;
 
 public interface SourceRepository extends JpaRepository<SourceInfo, Long> {
 
-//    List<SourceInfo> findSourceInfoBySourceId(Long sourceId);
     List<SourceInfo> findSourceInfoByMagnetronId(Long magnetronId);
     @Modifying
     @Query(value = "SELECT s FROM SourceInfo s " +
