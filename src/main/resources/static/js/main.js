@@ -15,24 +15,27 @@ Vue.component('out-voltage-cell', {
         }
     },
     methods: {
-        buttonClick(numb) {
+        buttonClick(number) {
             this.show2 = !this.show2
-            this.sourceNumber = numb
+            this.sourceNumber = number
         }
     },
     template:
     '<div>'
-    + '<div v-if="show2"><form v-on:submit.prevent="show2 = !show2;"><button>Назад</button></form></div>'
+    + '<div class="navbar">'
+    +    '<p>Training monitoring system</p>'
+    + '</div>'
+    + '<div class="back-button" v-if="show2"><form v-on:submit.prevent="show2 = !show2;"><button>Назад</button></form></div>'
     + '<div v-if="show2"><full-table :sourceNumber="sourceNumber"/></div>'
-        + '<div v-else>'
-            + '<table v-for="source in sourceInfo">'
-            + '<tr><td></td><td class="button_td"><form v-on:submit.prevent="buttonClick(source.sourceId)"><button>Пост {{source.sourceId}}</button></form></td></tr>'
-            + '<tr><td>Uвых</td><td>{{source.params[1]}}</td></tr>'
-            + '<tr><td>Uнак</td><td>{{source.params[0]}}</td></tr>'
-            + '<tr><td>Fluc</td><td>{{source.params[2]}}</td></tr>'
-            + '<tr><td>Alg.step</td><td>{{source.time}}</td></tr>'
-            + '</table>'
-        + '</div>'
+            + '<div v-else>'
+                + '<table v-for="source in sourceInfo">'
+                + '<tr><td></td><td class="button_td"><form v-on:submit.prevent="buttonClick(source.sourceId)"><button>Пост {{source.sourceId}}</button></form></td></tr>'
+                + '<tr><td>Uвых</td><td>{{source.params[1]}}</td></tr>'
+                + '<tr><td>Uнак</td><td>{{source.params[0]}}</td></tr>'
+                + '<tr><td>Fluc</td><td>{{source.params[4]}}</td></tr>'
+                + '<tr><td>Alg.step</td><td>{{source.time}}</td></tr>'
+                + '</table>'
+            + '</div>'
     + '</div>'
     }
 )
@@ -76,11 +79,14 @@ Vue.component('full-table', {
   template:
       '<div>'
       + '<table>'
-      + '<tr><td></td><td class="button_td"><form v-on:submit.prevent="show1 = !show1"><button>Пост {{sourceId}}</button></form></td></tr>'
-      + '<tr v-show="show1"><td>Uвых</td><td>{{params[1]}}</td></tr>'
+      + '<tr><td></td><td class="button_td">Пост {{sourceId}}</td></tr>'
+      + '<tr><td>Uвых</td><td>{{params[1]}}</td></tr>'
+      + '<tr><td>Ia</td><td>{{params[11]}}</td></tr>'
       + '<tr><td>Uнак</td><td>{{params[0]}}</td></tr>'
-      + '<tr><td>Fluc</td><td>{{params[2]}}</td></tr>'
-      + '<tr><td>Alg.step</td><td>{{time}}</td></tr>'
+      + '<tr><td>Freq</td><td>{{params[2]}}</td></tr>'
+      + '<tr><td>Fluc</td><td>{{params[3]}}</td></tr>'
+      + '<tr><td>Tимп</td><td>{{params[0]}}</td></tr>'
+      + '<tr><td>Time</td><td>{{time}}</td></tr>'
       + '</table>'
       + '</div>'
 })

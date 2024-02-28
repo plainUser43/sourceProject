@@ -9,8 +9,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SourceDto {
+public class SourceInfoDto {
     private Long numberOfMagnetron;
     private double time;
-    private List <Double> params;
+    private List<Double> params;
 }

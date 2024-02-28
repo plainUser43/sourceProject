@@ -3,17 +3,23 @@ html {
     align-content: center;
   }
 
+  body {
+    margin: 0px;
+    background-color: #E5E2C1;
+  }
+
   table {
     float: left;
     border-collapse: collapse;
     border: 2px solid rgb(200,200,200);
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     font-size: 1.2rem;
     padding: 7pt;
     margin-top: 0pt;
     margin-left: 10pt;
     margin-right: 10pt;
     margin-bottom: 10pt;
+    width: 385px;
   }
 
   td, th {
@@ -45,8 +51,6 @@ html {
 
   div {
     align-content: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
   }
 
   button {
@@ -60,3 +64,27 @@ html {
     width: 1cm;
     height: 1cm;
   }
+
+  .back-button {
+    margin: 10pt;
+  }
+
+  .navbar {
+    background-color: #A4DED8;
+    width: 100%;
+    margin-top: 0pt;
+    margin-bottom: 10pt;
+    height: 35pt;
+    text-align:center;
+    align-items: end;
+  }
+
+  p {
+    margin: 0pt;
+    font-size: 30pt;
+    font-family: impact;
+    color: #D8A4DE;
+    letter-spacing: 4px;
+    text-shadow: 2px 2px 3px white;
+  }
+#E5E2C1 #A4DED8

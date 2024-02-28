@@ -12,13 +12,13 @@ public interface SourceRepository extends JpaRepository<SourceInfo, Long> {
 
     List<SourceInfo> findSourceInfoByMagnetronId(Long magnetronId);
     @Modifying
-    @Query(value = "SELECT s FROM SourceInfo s " +
-        "WHERE sourceId = :id " +
-        "AND time = (" +
-        "SELECT MAX(time) " +
-        "FROM SourceInfo " +
-        "WHERE sourceId = :id) ORDER BY id DESC " +
-            "LIMIT 1")
+    @Query(value = "SELECT s FROM SourceInfo s "
+        + "WHERE sourceId = :id "
+        + "AND time = ("
+        + "SELECT MAX(time) "
+        + "FROM SourceInfo "
+        + "WHERE sourceId = :id) ORDER BY id DESC "
+        +    "LIMIT 1")
     SourceInfo findSourceInfoBySourceId(@Param("id") Long id);
     List<SourceInfo> findAll();
 }
