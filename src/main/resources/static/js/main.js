@@ -4,6 +4,9 @@ Vue.component('out-voltage-cell', {
     created: function() {
         sourceApi.get().then(response => this.sourceInfo = response.body)
     },
+    updated: function() {
+            sourceApi.get().then(response => this.sourceInfo = response.body)
+        },
     data() {
         return {
           sourceInfo: [],
@@ -15,12 +18,11 @@ Vue.component('out-voltage-cell', {
         buttonClick(numb) {
             this.show2 = !this.show2
             this.sourceNumber = numb
-            console.log(this.sourceNumber)
         }
     },
     template:
     '<div>'
-    + '<div v-if="show2"><form v-on:submit.prevent="show2 = !show2"><button><=</button></form></div>'
+    + '<div v-if="show2"><form v-on:submit.prevent="show2 = !show2;"><button>Назад</button></form></div>'
     + '<div v-if="show2"><full-table :sourceNumber="sourceNumber"/></div>'
         + '<div v-else>'
             + '<table v-for="source in sourceInfo">'
@@ -59,6 +61,18 @@ Vue.component('full-table', {
                                      this.magnetronId = json.magnetronId
                                      });
   },
+  updated: function() {
+        fetch('http://localhost:8080/sources/' + this.source, {
+                        method: "GET"
+                      })
+                        .then((response) => response.json())
+                        .then(json => {
+                                       this.params = json.params
+                                       this.time = json.time
+                                       this.sourceId = json.sourceId
+                                       this.magnetronId = json.magnetronId
+                                       });
+    },
   template:
       '<div>'
       + '<table>'

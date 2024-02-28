@@ -17,7 +17,8 @@ public interface SourceRepository extends JpaRepository<SourceInfo, Long> {
         "AND time = (" +
         "SELECT MAX(time) " +
         "FROM SourceInfo " +
-        "WHERE sourceId = :id)")
+        "WHERE sourceId = :id) ORDER BY id DESC " +
+            "LIMIT 1")
     SourceInfo findSourceInfoBySourceId(@Param("id") Long id);
     List<SourceInfo> findAll();
 }
